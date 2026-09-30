@@ -58,7 +58,7 @@ def create_banner():
     try:
         f_mantra = ImageFont.truetype(os.path.join(font_dir, 'georgia.ttf'), 15)
         f_invite_title = ImageFont.truetype(os.path.join(font_dir, 'georgiab.ttf'), 18)
-        f_names = ImageFont.truetype(os.path.join(font_dir, 'georgiab.ttf'), 50)
+        f_names = ImageFont.truetype(os.path.join(font_dir, 'georgiab.ttf'), 46)
         f_date = ImageFont.truetype(os.path.join(font_dir, 'georgiab.ttf'), 26)
         f_time = ImageFont.truetype(os.path.join(font_dir, 'georgia.ttf'), 18)
         f_venue = ImageFont.truetype(os.path.join(font_dir, 'georgiai.ttf'), 16)
@@ -162,7 +162,7 @@ def create_banner():
     draw.polygon([(center_x, cur_y - 4), (center_x + 5, cur_y), (center_x, cur_y + 4), (center_x - 5, cur_y)], fill=bright_gold)
     cur_y += 24
 
-    draw_centered_text('Kalyan & Inchara', cur_y, f_names, (255, 252, 240, 255), (0, 0, 0, 220))
+    draw_centered_text('Kalyan weds Inchara', cur_y, f_names, (255, 252, 240, 255), (0, 0, 0, 220))
     cur_y += 76
 
     draw_centered_text('Friday, 30 October 2026', cur_y, f_date, (255, 225, 115, 255), (0, 0, 0, 200))
@@ -198,6 +198,8 @@ def create_banner():
     final_img.save(out_path, 'JPEG', quality=95, optimize=True)
     png_path = 'public/client-images/social-thumbnail.png'
     final_img.save(png_path, 'PNG', optimize=True)
+    final_img.save('public/client-images/kalyan-weds-inchara-banner.jpg', 'JPEG', quality=95, optimize=True)
+    final_img.save('public/client-images/kalyan-weds-inchara-banner.png', 'PNG', optimize=True)
     final_img.save('public/og-image.jpg', 'JPEG', quality=95, optimize=True)
     final_img.save('public/og-image.png', 'PNG', optimize=True)
     print(f'Metadata banners created successfully at: {out_path} and {png_path}')
