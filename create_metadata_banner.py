@@ -122,15 +122,15 @@ def create_banner():
 
         composite.paste(card_img, (left_x, top_y), card_img)
 
-    bride_img_path = 'public/client-images/bride.jpg'
-    b_raw = Image.open(bride_img_path)
-    b_box = (int(b_raw.width * 0.08), int(b_raw.height * 0.13), int(b_raw.width * 0.92), int(b_raw.height * 0.82))
-    draw_portrait_card(bride_img_path, 'Inchara Shetty', 'The Bride', start_x, card_top, b_box)
-
     groom_img_path = 'public/client-images/groom.jpg'
     g_raw = Image.open(groom_img_path)
     g_box = (int(g_raw.width * 0.15), int(g_raw.height * 0.08), int(g_raw.width * 0.85), int(g_raw.height * 0.65))
-    draw_portrait_card(groom_img_path, 'Kalyan Reddy', 'The Groom', start_x + card_w + card_gap, card_top, g_box)
+    draw_portrait_card(groom_img_path, 'Kalyan Reddy', 'The Groom', start_x, card_top, g_box)
+
+    bride_img_path = 'public/client-images/bride.jpg'
+    b_raw = Image.open(bride_img_path)
+    b_box = (int(b_raw.width * 0.08), int(b_raw.height * 0.13), int(b_raw.width * 0.92), int(b_raw.height * 0.82))
+    draw_portrait_card(bride_img_path, 'Inchara Shetty', 'The Bride', start_x + card_w + card_gap, card_top, b_box)
 
     # 6. Right Side Invitation Content
     col_left = start_x + (card_w * 2) + card_gap + 20
@@ -162,7 +162,7 @@ def create_banner():
     draw.polygon([(center_x, cur_y - 4), (center_x + 5, cur_y), (center_x, cur_y + 4), (center_x - 5, cur_y)], fill=bright_gold)
     cur_y += 24
 
-    draw_centered_text('Inchara & Kalyan', cur_y, f_names, (255, 252, 240, 255), (0, 0, 0, 220))
+    draw_centered_text('Kalyan & Inchara', cur_y, f_names, (255, 252, 240, 255), (0, 0, 0, 220))
     cur_y += 76
 
     draw_centered_text('Friday, 30 October 2026', cur_y, f_date, (255, 225, 115, 255), (0, 0, 0, 200))
@@ -196,9 +196,10 @@ def create_banner():
     final_img = composite.convert('RGB')
     out_path = 'public/client-images/social-thumbnail.jpg'
     final_img.save(out_path, 'JPEG', quality=95, optimize=True)
-    # Also save as png for crystal clear metadata
     png_path = 'public/client-images/social-thumbnail.png'
     final_img.save(png_path, 'PNG', optimize=True)
+    final_img.save('public/og-image.jpg', 'JPEG', quality=95, optimize=True)
+    final_img.save('public/og-image.png', 'PNG', optimize=True)
     print(f'Metadata banners created successfully at: {out_path} and {png_path}')
 
 if __name__ == '__main__':
